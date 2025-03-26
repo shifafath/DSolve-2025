@@ -357,22 +357,23 @@
         <div class="transport-options">
           <div class="transport-option" onclick="selectTransport(this, 'bus')">
             <i class="fas fa-bus"></i>
-            <p>Bus</p>
+            <p><a  href="/bus.html">Bus</a></p>
           </div>
 
           <div class="transport-option" onclick="selectTransport(this, 'walking')">
             <i class="fas fa-walking"></i>
-            <p>Walking</p>
+
+            <p><a    href="/walking.html">walking</a></p>
           </div>
 
           <div class="transport-option" onclick="selectTransport(this, 'bicycle')">
             <i class="fas fa-bicycle"></i>
-            <p>Cycling</p>
+            <p><a  href="/cycling.html">cycling</a></p>
           </div>
 
           <div class="transport-option" onclick="selectTransport(this, 'train')">
             <i class="fas fa-train"></i>
-            <p>Train</p>
+            <p><a  href="/train.html">train</a></p>
           </div>
         </div>
       </div>
@@ -514,20 +515,11 @@
       element.classList.add('active');
       element.setAttribute('data-type', type);
 
-      // Navigate to the respective page based on transport type
-      switch(type) {
-        case 'bicycle':
-          window.location.href = 'cycling.html';
-          break;
-        case 'walking':
-          window.location.href = 'walking.html';
-          break;
-        case 'train':
-          window.location.href = 'train.html';
-          break;
-        case 'bus':
-          window.location.href = 'bus.html';
-          break;
+      // If locations are already entered, recalculate
+      const from = document.getElementById('from').value;
+      const to = document.getElementById('to').value;
+      if (from && to) {
+        calculateRoute();
       }
     }
 
