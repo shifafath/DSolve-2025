@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div class="container" id="landingPage">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-bus"></i>
+                <span>TravelHub</span>
+            </div>
+            <div class="nav-buttons">
+                <button onclick="showLogin()">Login</button>
+                <button onclick="showSignup()">Sign Up</button>
+            </div>
+        </nav>
+
+        <!-- Login Form -->
+        <div class="auth-form" id="loginForm">
+            <h2>Login</h2>
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button onclick="login()">Login</button>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="auth-form" id="signupForm">
+            <h2>Sign Up</h2>
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <input type="password" placeholder="Confirm Password" required>
+            <button onclick="signup()">Sign Up</button>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboardPage">
+        <nav class="dashboard-nav">
+            <a href="#home" class="active">Home</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#rewards">Rewards</a>
+            <a href="#partners">Partners</a>
+            <button onclick="logout()" class="logout-btn">Logout</button>
+        </nav>
+        <div class="dashboard-content">
+            <h1>Welcome to TravelHub</h1>
+            <p>Your commuting companion</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

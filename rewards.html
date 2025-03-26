@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewards Center</title>
+    <link rel="stylesheet" href="styles1.css">
+    <link rel="stylesheet" href="transport-styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Rewards Center</h1>
+        <div class="points-display">
+            <h2>Your Total Points: <span id="totalPoints">0</span></h2>
+        </div>
+        <div class="rewards-grid">
+            <div class="reward-card">
+                <h3>Coffee Voucher</h3>
+                <p>500 points</p>
+                <button onclick="redeemReward(500, 'Coffee Voucher')">Redeem</button>
+            </div>
+            <div class="reward-card">
+                <h3>Eco-friendly Water Bottle</h3>
+                <p>1000 points</p>
+                <button onclick="redeemReward(1000, 'Eco-friendly Water Bottle')">Redeem</button>
+            </div>
+            <div class="reward-card">
+                <h3>Campus Bookstore Discount</h3>
+                <p>1500 points</p>
+                <button onclick="redeemReward(1500, 'Campus Bookstore Discount')">Redeem</button>
+            </div>
+        </div>
+        <div class="navigation">
+            <a href="index1.html">Back to Home</a>
+        </div>
+    </div>
+    <script>
+        function updateTotalPoints() {
+            const savedPoints = localStorage.getItem('totalPoints');
+            if (savedPoints) {
+                document.getElementById('totalPoints').textContent = savedPoints;
+            }
+        }
+
+        function redeemReward(pointsRequired, rewardName) {
+            const currentPoints = parseInt(localStorage.getItem('totalPoints') || '0');
+            
+            if (currentPoints >= pointsRequired) {
+                const remainingPoints = currentPoints - pointsRequired;
+                localStorage.setItem('totalPoints', remainingPoints);
+                alert(`Congratulations! You have redeemed a ${rewardName}!`);
+                updateTotalPoints();
+            } else {
+                alert(`Sorry, you need ${pointsRequired} points to redeem this reward. You currently have ${currentPoints} points.`);
+            }
+        }
+
+        // Update points display when page loads
+        window.onload = updateTotalPoints;
+    </script>
+</body>
+</html> 

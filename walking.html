@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walking Points Calculator</title>
+    <link rel="stylesheet" href="styles1.css">
+    <link rel="stylesheet" href="transport-styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Walking Points Calculator</h1>
+        <div class="calculator">
+            <div class="input-group">
+                <label for="distance">Distance (km):</label>
+                <input type="number" id="distance" min="0" step="0.1">
+            </div>
+            <button onclick="calculateWalkingPoints()">Calculate Points</button>
+            <div class="result">
+                <p>Points earned: <span id="points">0</span></p>
+                <p>Total points: <span id="totalPoints">0</span></p>
+            </div>
+        </div>
+        <div class="rewards-info">
+            <h2>Available Rewards</h2>
+            <ul>
+                <li>500 points - Coffee Voucher</li>
+                <li>1000 points - Eco-friendly Water Bottle</li>
+                <li>1500 points - Campus Bookstore Discount</li>
+            </ul>
+        </div>
+        <div class="navigation">
+            <a href="index1.html">Back to Home</a>
+            <a href="rewards.html">View Rewards</a>
+        </div>
+    </div>
+    <script>
+        let totalPoints = 0;
+        
+        function calculateWalkingPoints() {
+            const distance = parseFloat(document.getElementById('distance').value);
+            if (isNaN(distance) || distance < 0) {
+                alert('Please enter a valid distance');
+                return;
+            }
+            
+            // 20 points per 10km for walking
+            const points = Math.floor(distance / 10) * 20;
+            totalPoints += points;
+            
+            document.getElementById('points').textContent = points;
+            document.getElementById('totalPoints').textContent = totalPoints;
+            
+            // Save total points to localStorage
+            localStorage.setItem('totalPoints', totalPoints);
+        }
+        
+        // Load total points from localStorage on page load
+        window.onload = function() {
+            const savedPoints = localStorage.getItem('totalPoints');
+            if (savedPoints) {
+                totalPoints = parseInt(savedPoints);
+                document.getElementById('totalPoints').textContent = totalPoints;
+            }
+        };
+    </script>
+</body>
+</html> 
